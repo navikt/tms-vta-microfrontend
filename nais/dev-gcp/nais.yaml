@@ -1,29 +1,29 @@
 apiVersion: "nais.io/v1alpha1"
 kind: "Application"
 metadata:
-  name: tms-mikrofrontend-template
-  namespace: min-side
+  name: tms-vta-microfrontend
+  namespace: paw
   labels:
-    team: min-side
+    team: paw
 spec:
   envFrom:
-    - secret: tms-mikrofrontend-template-secrets
+    - secret: tms-vta-microfrontend-secrets
   image: { { version } }
   port: 7100
   liveness:
-    path: /tms-mikrofrontend-template/internal/isAlive
+    path: /tms-vta-microfrontend/internal/isAlive
     initialDelay: 10
   readiness:
-    path: /tms-mikrofrontend-template/internal/isReady
+    path: /tms-vta-microfrontend/internal/isReady
     initialDelay: 10
   prometheus:
     enabled: true
-    path: /tms-mikrofrontend-template/internal/metrics
+    path: /tms-vta-microfrontend/internal/metrics
   replicas:
     min: 2
     max: 4
   ingresses:
-    - "https://person.dev.nav.no/tms-mikrofrontend-template"
+    - "https://person.dev.nav.no/tms-vta-microfrontend"
   resources:
     limits:
       cpu: "3"
